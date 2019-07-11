@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">someApp</string>
     <string name="email">Email</string>
-    <string name="login">Login</string>
+    <string name="login">Log in</string>
     <string name="password">Password</string>
+    <string name="dontHaveAnAccount">Don\'t have an account?</string>
+    <string name="signUpHere">Sign up here :)</string>
+    <string name="loginWithGoogle">Log in with Google</string>
+    <string name="loginWithFacebook">Log in with Facebook</string>
 </resources>
