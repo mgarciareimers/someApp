@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.mgarciareimers.someApp.R;
 import com.mgarciareimers.someApp.commons.Utilities;
@@ -75,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         if (Utilities.emailIsValid(this.emailEditText.getText().toString()) && Utilities.passwordIsValid(this.passwordEditText.getText().toString())) {
             Log.d("LoginButton", "Login...");
         } else {
-            Log.d("LoginButton", "Not valid!");
+            Utilities.presentToast(this, this.getString(R.string.credentialsNotCorrect));
         }
     }
 

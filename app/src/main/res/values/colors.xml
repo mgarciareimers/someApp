@@ -5,7 +5,8 @@
     <color name="colorAccent">#D81B60</color>
     <color name="white">#FFFFFF</color>
     <color name="yellow">#E79926</color>
-    <color name="lightYellow">#59FFFFFF</color>
+    <color name="lightYellow">#FFD99E</color>
+    <color name="lightYellowTransparent">#59FFFFFF</color>
     <color name="darkYellow">#A26A14</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="black">#000000</color>
