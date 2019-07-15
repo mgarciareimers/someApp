@@ -74,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
     // Method that is called when the user clicks the login button.
     private void onLoginButtonClicked() {
         if (Utilities.emailIsValid(this.emailEditText.getText().toString()) && Utilities.passwordIsValid(this.passwordEditText.getText().toString())) {
-            Log.d("LoginButton", "Login...");
+            Log.d("LoginButton", "Login..."); // TODO
         } else {
             Utilities.presentToast(this, this.getString(R.string.credentialsNotCorrect));
         }
@@ -82,12 +82,12 @@ public class LoginActivity extends AppCompatActivity {
 
     // Method that is called when the user clicks the google login button.
     private void onGoogleLoginButtonClicked() {
-        Log.d("GoogleLoginButton", "Google login...");
+        Log.d("GoogleLoginButton", "Google login..."); // TODO
     }
 
     // Method that is called when the user clicked the facebook login button.
     private void onFacebookLoginButtonClicked() {
-        Log.d("FacebookLoginButton", "Facebook login...");
+        Log.d("FacebookLoginButton", "Facebook login..."); // TODO
     }
 
     // Method that is called when the user click the sign up texts.

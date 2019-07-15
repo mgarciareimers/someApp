@@ -2,6 +2,7 @@ package com.mgarciareimers.someApp.commons;
 
 import android.content.Context;
 import android.view.Gravity;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.mgarciareimers.someApp.R;

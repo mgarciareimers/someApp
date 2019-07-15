@@ -10,4 +10,6 @@
     <color name="darkYellow">#A26A14</color>
     <color name="transparent">#00FFFFFF</color>
     <color name="black">#000000</color>
+    <color name="blackFade">#CD000000</color>
+    <color name="dialogBackground">#D6D7D7</color>
 </resources>

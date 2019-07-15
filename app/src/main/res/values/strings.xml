@@ -1,15 +1,17 @@
 <resources>
-    <string name="acceptTerms">I accept these Terms and Conditions.</string>
+    <string name="acceptTermsAndConditions">I accept these Terms and Conditions of use.</string>
     <string name="app_name">someApp</string>
     <string name="createAccount">Create Account</string>
     <string name="credentialsNotCorrect">Your credentials are not correct!</string>
     <string name="dontHaveAnAccount">Don\'t have an account?</string>
     <string name="email">Email</string>
     <string name="fieldsNotValid">At least one of the fields is not valid!</string>
+    <string name="loading">Loading...</string>
     <string name="login">Log in</string>
     <string name="loginWithFacebook">Log in with Facebook</string>
     <string name="loginWithGoogle">Log in with Google</string>
     <string name="nameAndSurname">Name and Surname</string>
+    <string name="needAcceptTerms">To create the account you need to accept the Terms and Conditions of use!</string>
     <string name="password">Password</string>
     <string name="signUp">Sign Up</string>
     <string name="signUpHere">Sign up here :)</string>
