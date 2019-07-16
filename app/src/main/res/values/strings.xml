@@ -13,8 +13,11 @@
     <string name="nameAndSurname">Name and Surname</string>
     <string name="needAcceptTerms">To create the account you need to accept the Terms and Conditions of use!</string>
     <string name="password">Password</string>
+    <string name="profile">Profile</string>
+    <string name="searchUsers">Search Users</string>
     <string name="signUp">Sign Up</string>
     <string name="signUpHere">Sign up here :)</string>
     <string name="signUpWithFacebook">Sign up with Facebook</string>
     <string name="signUpWithGoogle">Sign up with Google</string>
+    <string name="typeSomething">Type something&#8230;</string>
 </resources>

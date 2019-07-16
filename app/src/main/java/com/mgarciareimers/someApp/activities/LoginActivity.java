@@ -9,7 +9,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.mgarciareimers.someApp.R;
 import com.mgarciareimers.someApp.commons.Utilities;
@@ -77,6 +76,7 @@ public class LoginActivity extends AppCompatActivity {
             Log.d("LoginButton", "Login..."); // TODO
         } else {
             Utilities.presentToast(this, this.getString(R.string.credentialsNotCorrect));
+            this.startActivity(new Intent(this, TabsActivity.class));
         }
     }
 
