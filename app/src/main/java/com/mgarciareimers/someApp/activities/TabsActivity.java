@@ -16,6 +16,7 @@ import com.google.gson.reflect.TypeToken;
 import com.mgarciareimers.someApp.R;
 import com.mgarciareimers.someApp.adapters.ViewPagerAdapter;
 import com.mgarciareimers.someApp.commons.Utilities;
+import com.mgarciareimers.someApp.fragments.ProfileFragment;
 import com.mgarciareimers.someApp.fragments.SearchUserFragment;
 import com.mgarciareimers.someApp.model.User;
 import com.mgarciareimers.someApp.services.ServerInterface;
@@ -35,9 +36,8 @@ public class TabsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tabs);
 
-        this.getUsers();
-
         this.defineFields();
+        this.getUsers();
         this.defineFieldActions();
     }
 
@@ -45,7 +45,7 @@ public class TabsActivity extends AppCompatActivity {
     private void defineFields() {
         this.viewPager = this.findViewById(R.id.viewPager);
         this.tabLayout = this.findViewById(R.id.tabLayout);
-        this.progressBarContainer = this.findViewById(R.id.progressBarContainer);
+        this.progressBarContainer = findViewById(R.id.progressBarDialog);
     }
 
     // Method that defines the actions of the fields.
@@ -53,7 +53,7 @@ public class TabsActivity extends AppCompatActivity {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
         adapter.addFragment(new SearchUserFragment(this.userList), this.getString(R.string.searchUsers));
-        adapter.addFragment(new SearchUserFragment(this.userList), this.getString(R.string.profile));
+        adapter.addFragment(new ProfileFragment(), this.getString(R.string.profile));
 
         this.viewPager.setAdapter(adapter);
 
@@ -105,6 +105,7 @@ public class TabsActivity extends AppCompatActivity {
 
                 try {
                     userList = gson.fromJson(response, new TypeToken<ArrayList<User>>(){}.getType());
+                    Log.d("List", "");
                 } catch (Exception e) {
                     Log.d("Exception", e.toString());
                     Utilities.presentToast(TabsActivity.this, e.toString());
