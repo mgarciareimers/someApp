@@ -19,5 +19,5 @@
     <string name="signUpHere">Sign up here :)</string>
     <string name="signUpWithFacebook">Sign up with Facebook</string>
     <string name="signUpWithGoogle">Sign up with Google</string>
-    <string name="typeSomething">Type something&#8230;</string>
+    <string name="typeSomething">Type something to filter&#8230;</string>
 </resources>

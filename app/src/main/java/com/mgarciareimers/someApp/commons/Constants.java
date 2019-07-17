@@ -6,4 +6,8 @@ public class Constants {
 
     // Strings.
     public static final String TERMS_AND_CONDITIONS_URL = "https://www.termsfeed.com/blog/wp-content/uploads/2019/04/terms-and-conditions-template.pdf";
+
+    // Server fields.
+    public static final String EMAIL = "email";
+    public static final String PASSWORD = "password";
 }
