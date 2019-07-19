@@ -54,4 +54,8 @@ public class Address {
     public void setGeo(Geolocation geo) {
         this.geo = geo;
     }
+
+    public boolean containsFilter(String filter) {
+        return this.street.contains(filter) || this.suite.contains(filter) || this.city.contains(filter) || this.zipcode.contains(filter);
+    }
 }

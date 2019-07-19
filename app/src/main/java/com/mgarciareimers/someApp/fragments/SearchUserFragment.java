@@ -5,9 +5,13 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -24,6 +28,7 @@ import com.mgarciareimers.someApp.adapters.UserListAdapter;
 import com.mgarciareimers.someApp.commons.Constants;
 import com.mgarciareimers.someApp.commons.Utilities;
 import com.mgarciareimers.someApp.model.User;
+import com.mgarciareimers.someApp.model.UserPictureGroup;
 import com.mgarciareimers.someApp.services.ServerInterface;
 
 import java.io.InputStream;
@@ -38,6 +43,7 @@ public class SearchUserFragment extends Fragment {
     private List<User> userList = new ArrayList<>();
     private List<Bitmap> bitmapList = new ArrayList<>();
 
+    private EditText searchEditText;
     private GridView usersGridView;
     private ConstraintLayout progressBarContainer;
     private UserListAdapter userListAdapter;
@@ -54,8 +60,27 @@ public class SearchUserFragment extends Fragment {
         View fragmentView = inflater.inflate(R.layout.fragment_search_user, container, false);
 
         this.usersGridView = fragmentView.findViewById(R.id.usersGridView);
-        this.userListAdapter = new UserListAdapter(this.activity, this.userList, this.bitmapList);
+        this.userListAdapter = new UserListAdapter(this.activity, new UserPictureGroup(this.userList, this.bitmapList));
         this.usersGridView.setAdapter(userListAdapter);
+
+        this.searchEditText = fragmentView.findViewById(R.id.searchEditText);
+
+        this.searchEditText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                userListAdapter.notifyDataSetChanged(Utilities.filterUsers(editable.toString(), userList, bitmapList));
+            }
+        });
 
         return fragmentView;
     }
@@ -101,8 +126,10 @@ public class SearchUserFragment extends Fragment {
 
         @Override
         protected void onPostExecute(List<Bitmap> bitmaps) {
+            bitmapList = bitmaps;
+
             if (bitmaps != null) {
-                userListAdapter.notifyDataSetChanged(userList, bitmaps);
+                userListAdapter.notifyDataSetChanged(new UserPictureGroup(userList, bitmapList));
             } else {
                 Utilities.presentToast(activity, activity.getString(R.string.genericError));
                 activity.finish();

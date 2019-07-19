@@ -34,4 +34,8 @@ public class Company {
     public void setBs(String bs) {
         this.bs = bs;
     }
+
+    public boolean containsFilter(String filter) {
+        return this.name.contains(filter) || this.catchPhrase.contains(filter) || this.bs.contains(filter);
+    }
 }

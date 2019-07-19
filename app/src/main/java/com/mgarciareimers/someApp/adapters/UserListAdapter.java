@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.mgarciareimers.someApp.R;
 import com.mgarciareimers.someApp.model.User;
+import com.mgarciareimers.someApp.model.UserPictureGroup;
 
 import java.util.List;
 
@@ -20,10 +21,10 @@ public class UserListAdapter extends BaseAdapter {
     private List<User> userList;
     private List<Bitmap> bitmapList;
 
-    public UserListAdapter(Activity context, List<User> userList, List<Bitmap> bitmapList) {
+    public UserListAdapter(Activity context, UserPictureGroup userPictureGroup) {
         this.activity = context;
-        this.userList = userList;
-        this.bitmapList = bitmapList;
+        this.userList = userPictureGroup.getUserList();
+        this.bitmapList = userPictureGroup.getBitmapList();
     }
 
 
@@ -51,11 +52,12 @@ public class UserListAdapter extends BaseAdapter {
             listView = layoutInflater.inflate(R.layout.element_user, viewGroup, false);
         }
 
+        // ImageView.
         ImageView userImageView = listView.findViewById(R.id.userImageView);
         userImageView.setImageBitmap(this.bitmapList.get(index));
 
+        // TextView.
         TextView userInfoTextView = listView.findViewById(R.id.userInfoTextView);
-
         userInfoTextView.setText(this.userList.get(index).getName());
 
         listView.setOnClickListener(new View.OnClickListener() {
@@ -68,9 +70,9 @@ public class UserListAdapter extends BaseAdapter {
         return listView;
     }
 
-    public void notifyDataSetChanged(List<User> userList, List<Bitmap> bitmapList) {
-        this.userList = userList;
-        this.bitmapList = bitmapList;
+    public void notifyDataSetChanged(UserPictureGroup userPictureGroup) {
+        this.userList = userPictureGroup.getUserList();
+        this.bitmapList = userPictureGroup.getBitmapList();
         this.notifyDataSetChanged();
     }
 }
