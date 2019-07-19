@@ -4,17 +4,20 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
 import com.mgarciareimers.someApp.R;
 
 public class ProfileFragment extends Fragment {
+    private ConstraintLayout progressBarContainer = null;
 
-    public ProfileFragment() {
-
+    public ProfileFragment(ConstraintLayout progressBarContainer) {
+        this.progressBarContainer = progressBarContainer;
     }
 
     @Nullable
