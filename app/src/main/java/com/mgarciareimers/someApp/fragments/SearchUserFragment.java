@@ -48,8 +48,8 @@ public class SearchUserFragment extends Fragment {
     private ConstraintLayout progressBarContainer;
     private UserListAdapter userListAdapter;
 
-    public SearchUserFragment(Activity context, ConstraintLayout progressBarContainer) {
-        this.activity = context;
+    public SearchUserFragment(Activity activity, ConstraintLayout progressBarContainer) {
+        this.activity = activity;
         this.progressBarContainer = progressBarContainer;
         this.getUsers();
     }

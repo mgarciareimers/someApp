@@ -41,7 +41,7 @@ public class TabsActivity extends AppCompatActivity {
     // Method that creates the tabs.
     private void createTabs() {
         this.searchUserFragment = new SearchUserFragment(this, progressBarContainer);
-        this.profileFragment = new ProfileFragment(progressBarContainer);
+        this.profileFragment = new ProfileFragment(this, progressBarContainer);
     }
 
     // Method that defines the actions of the fields.

@@ -6,12 +6,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import com.mgarciareimers.someApp.R;
 import com.mgarciareimers.someApp.commons.Constants;
@@ -35,7 +33,7 @@ public class SignUpActivity extends AppCompatActivity {
     private void defineFields() {
         this.emailEditText = this.findViewById(R.id.emailEditText);
         this.passwordEditText = this.findViewById(R.id.passwordEditText);
-        this.nameSurnameEditText = this.findViewById(R.id.nameSurname);
+        this.nameSurnameEditText = this.findViewById(R.id.nameSurnameEditText);
         this.acceptTermsCheckBox = this.findViewById(R.id.acceptTermsCheckBox);
         this.signUpButton = this.findViewById(R.id.signUpButton);
         this.googleSignUpButton = this.findViewById(R.id.googleSignUpButton);

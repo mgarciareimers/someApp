@@ -16,6 +16,7 @@
     <string name="needAcceptTerms">To create the account you need to accept the Terms and Conditions of use!</string>
     <string name="password">Password</string>
     <string name="profile">Profile</string>
+    <string name="savedData">Your data have been successfully saved!</string>
     <string name="searchUsers">Search Users</string>
     <string name="signUp">Sign Up</string>
     <string name="signUpHere">Sign up here :)</string>

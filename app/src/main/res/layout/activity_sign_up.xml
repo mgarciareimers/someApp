@@ -98,7 +98,7 @@
         android:textCursorDrawable="@drawable/edit_text_cursor" />
 
     <EditText
-        android:id="@+id/nameSurname"
+        android:id="@+id/nameSurnameEditText"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -128,9 +128,9 @@
         android:layout_marginBottom="8dp"
         android:text="@string/acceptTermsAndConditions"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/nameSurname"
-        app:layout_constraintStart_toStartOf="@+id/nameSurname"
-        app:layout_constraintTop_toBottomOf="@+id/nameSurname"
+        app:layout_constraintEnd_toEndOf="@+id/nameSurnameEditText"
+        app:layout_constraintStart_toStartOf="@+id/nameSurnameEditText"
+        app:layout_constraintTop_toBottomOf="@+id/nameSurnameEditText"
         app:layout_constraintVertical_bias="0.01999998"
         app:theme="@style/CheckboxStyle"
         android:textColor="@color/white"/>
