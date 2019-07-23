@@ -9,5 +9,5 @@ Test app developed in Android (native). The screens to be implemented are:
     3.4. Pagination of the results (if possible).
     3.5. Allow to order the results by closeness (geolocation) (secondary goal -> Maybe done or not).
   4. Profile:
-    4.1. Own profile: Can be edited (data are not saved).
+    4.1. Own profile: Can be edited.
     4.2. Others profile: Cannot be edited.
