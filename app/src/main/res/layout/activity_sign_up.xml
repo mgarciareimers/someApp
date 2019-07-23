@@ -97,29 +97,6 @@
         android:drawableStart="@drawable/ic_lock"
         android:textCursorDrawable="@drawable/edit_text_cursor" />
 
-    <EditText
-        android:id="@+id/nameSurnameEditText"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:layout_marginBottom="8dp"
-        android:autofillHints=""
-        android:background="@drawable/edit_text_background"
-        android:drawableLeft="@drawable/ic_user"
-        android:drawableStart="@drawable/ic_user"
-        android:ems="10"
-        android:hint="@string/nameAndSurname"
-        android:inputType="text"
-        android:padding="8dp"
-        android:textColorHint="@color/darkYellow"
-        android:textCursorDrawable="@drawable/edit_text_cursor"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/emailEditText"
-        app:layout_constraintStart_toStartOf="@+id/emailEditText"
-        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
-        app:layout_constraintVertical_bias="0.02" />
-
     <CheckBox
         android:id="@+id/acceptTermsCheckBox"
         android:layout_width="0dp"
@@ -127,13 +104,13 @@
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:text="@string/acceptTermsAndConditions"
+        android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/nameSurnameEditText"
-        app:layout_constraintStart_toStartOf="@+id/nameSurnameEditText"
-        app:layout_constraintTop_toBottomOf="@+id/nameSurnameEditText"
-        app:layout_constraintVertical_bias="0.01999998"
-        app:theme="@style/CheckboxStyle"
-        android:textColor="@color/white"/>
+        app:layout_constraintEnd_toEndOf="@+id/passwordEditText"
+        app:layout_constraintStart_toStartOf="@+id/passwordEditText"
+        app:layout_constraintTop_toBottomOf="@+id/passwordEditText"
+        app:layout_constraintVertical_bias="0.02"
+        app:theme="@style/CheckboxStyle" />
 
     <Button
         android:id="@+id/signUpButton"

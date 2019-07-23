@@ -85,6 +85,8 @@ public class TabsActivity extends AppCompatActivity {
                 this.searchUserFragment.getUsers();
                 break;
             case 1:
+                this.profileFragment.editProfile(false);
+                this.profileFragment.getUser();
                 break;
             default:
                 break;

@@ -3,9 +3,11 @@ package com.mgarciareimers.someApp.fragments;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -15,10 +17,13 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.UserProfileChangeRequest;
 import com.mgarciareimers.someApp.R;
 import com.mgarciareimers.someApp.activities.LoginActivity;
-import com.mgarciareimers.someApp.activities.TabsActivity;
 import com.mgarciareimers.someApp.commons.Utilities;
 
 public class ProfileFragment extends Fragment {
@@ -30,11 +35,13 @@ public class ProfileFragment extends Fragment {
     private EditText nameSurnameEditText, emailEditText;
 
     private FirebaseAuth firebaseAuth;
+    private FirebaseUser firebaseUser;
 
     public ProfileFragment(Activity activity, ConstraintLayout progressBarContainer) {
         this.activity = activity;
         this.progressBarContainer = progressBarContainer;
         this.firebaseAuth = FirebaseAuth.getInstance();
+        this.firebaseUser = this.firebaseAuth.getCurrentUser();
     }
 
     @Nullable
@@ -80,30 +87,35 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-
         return fragmentView;
     }
 
     // Method that is called when the user clicks the edit or cancel button.
-    private void editProfile(boolean edit) {
+    public void editProfile(boolean edit) {
         this.nameSurnameEditText.setEnabled(edit);
-        this.emailEditText.setEnabled(edit);
 
         if (edit) {
             this.editButton.setVisibility(View.GONE);
+            this.signOutButton.setVisibility(View.GONE);
             this.saveButton.setVisibility(View.VISIBLE);
             this.cancelButton.setVisibility(View.VISIBLE);
+
+            this.nameSurnameEditText.requestFocus();
+            InputMethodManager imm = (InputMethodManager) this.activity.getSystemService(this.activity.INPUT_METHOD_SERVICE);
+            imm.showSoftInput(this.nameSurnameEditText, InputMethodManager.SHOW_IMPLICIT);
         } else {
             this.editButton.setVisibility(View.VISIBLE);
+            this.signOutButton.setVisibility(View.VISIBLE);
             this.saveButton.setVisibility(View.GONE);
             this.cancelButton.setVisibility(View.GONE);
+
+            this.setFieldValues();
         }
     }
 
     // Method that is called when the user clicks the save button.
     private void saveProfile() {
         if (Utilities.emailIsValid(this.emailEditText.getText().toString()) && Utilities.nameIsValid(this.nameSurnameEditText.getText().toString())) {
-            this.editProfile(false);
             this.saveData();
         } else {
             Utilities.presentToast(this.activity, this.activity.getString(R.string.fieldsNotValid));
@@ -114,7 +126,47 @@ public class ProfileFragment extends Fragment {
     private void saveData() {
         this.progressBarContainer.setVisibility(View.VISIBLE);
 
-        this.progressBarContainer.setVisibility(View.GONE);
-        Utilities.presentToast(this.activity, this.activity.getString(R.string.savedData));
+        boolean nameHasChanged = !this.nameSurnameEditText.getText().toString().equals(this.firebaseUser.getDisplayName());
+
+        if (nameHasChanged) {
+            UserProfileChangeRequest userProfileChangeRequest = new UserProfileChangeRequest.Builder()
+                .setDisplayName(this.nameSurnameEditText.getText().toString())
+                .build();
+
+            this.firebaseUser.updateProfile(userProfileChangeRequest).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (!task.isSuccessful()) {
+                        progressBarContainer.setVisibility(View.GONE);
+                        Utilities.presentToast(activity, activity.getString(R.string.genericError));
+                        editProfile(false);
+                    } else {
+                        progressBarContainer.setVisibility(View.GONE);
+                        Utilities.presentToast(activity, activity.getString(R.string.savedData));
+                        editProfile(false);
+                    }
+                }
+            });
+        } else {
+            this.progressBarContainer.setVisibility(View.GONE);
+            Utilities.presentToast(this.activity, this.activity.getString(R.string.noChangesRegistered));
+        }
+    }
+
+    // Method that gets the user.
+    public void getUser() {
+        if (this.firebaseUser != null) {
+            this.setFieldValues();
+
+            if (!Utilities.nameIsValid(this.nameSurnameEditText.getText().toString())) {
+                this.nameSurnameEditText.setError(this.activity.getString(R.string.noName));
+            }
+        }
+    }
+
+    // Method that sets the values of the fields.
+    private void setFieldValues() {
+        this.nameSurnameEditText.setText(this.firebaseUser.getDisplayName());
+        this.emailEditText.setText(this.firebaseUser.getEmail());
     }
 }

@@ -6,6 +6,7 @@
     <string name="credentialsNotCorrect">Your credentials are not correct!</string>
     <string name="dontHaveAnAccount">Don\'t have an account?</string>
     <string name="email">Email</string>
+    <string name="errorSavingEmail">An error occurred while updating your email.</string>
     <string name="fieldsNotValid">At least one of the fields is not valid!</string>
     <string name="genericError">An unexpected error occurred! Please try again later.</string>
     <string name="loading">Loading&#8230;</string>
@@ -14,6 +15,8 @@
     <string name="loginWithGoogle">Log in with Google</string>
     <string name="nameAndSurname">Name and Surname</string>
     <string name="needAcceptTerms">To create the account you need to accept the Terms and Conditions of use!</string>
+    <string name="noChangesRegistered">No changes have been registered!</string>
+    <string name="noName">Don\'t you have a name? :)</string>
     <string name="password">Password</string>
     <string name="profile">Profile</string>
     <string name="savedData">Your data have been successfully saved!</string>

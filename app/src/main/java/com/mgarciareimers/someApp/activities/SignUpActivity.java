@@ -26,7 +26,7 @@ import java.security.Signature;
 
 public class SignUpActivity extends AppCompatActivity {
 
-    private EditText emailEditText, passwordEditText, nameSurnameEditText;
+    private EditText emailEditText, passwordEditText;
     private CheckBox acceptTermsCheckBox;
     private Button signUpButton, googleSignUpButton, facebookSignUpButton;
     private ConstraintLayout progressBarContainer = null;
@@ -46,7 +46,6 @@ public class SignUpActivity extends AppCompatActivity {
     private void defineFields() {
         this.emailEditText = this.findViewById(R.id.emailEditText);
         this.passwordEditText = this.findViewById(R.id.passwordEditText);
-        this.nameSurnameEditText = this.findViewById(R.id.nameSurnameEditText);
         this.acceptTermsCheckBox = this.findViewById(R.id.acceptTermsCheckBox);
         this.signUpButton = this.findViewById(R.id.signUpButton);
         this.googleSignUpButton = this.findViewById(R.id.googleSignUpButton);
@@ -98,7 +97,7 @@ public class SignUpActivity extends AppCompatActivity {
 
     // Method that is called when the user clicks the sign up button.
     private void onSignUpButtonClicked() {
-        if (Utilities.emailIsValid(this.emailEditText.getText().toString()) && Utilities.passwordIsValid(this.passwordEditText.getText().toString()) && Utilities.nameIsValid(this.nameSurnameEditText.getText().toString()) && this.acceptTermsCheckBox.isChecked()) {
+        if (Utilities.emailIsValid(this.emailEditText.getText().toString()) && Utilities.passwordIsValid(this.passwordEditText.getText().toString()) && this.acceptTermsCheckBox.isChecked()) {
             this.signUp();
         } else if (!this.acceptTermsCheckBox.isChecked()) {
             Utilities.presentToast(this, this.getString(R.string.needAcceptTerms));

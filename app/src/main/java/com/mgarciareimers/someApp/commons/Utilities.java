@@ -21,7 +21,9 @@ public class Utilities {
     public static boolean passwordIsValid(String password) { return password.length() >= Constants.MIN_PASSWORD_LENGTH; }
 
     // Method that checks if the name is valid.
-    public static boolean nameIsValid(String name) { return name != ""; }
+    public static boolean nameIsValid(String name) {
+        return !name.equals("");
+    }
 
     // Method that presents a toast.
     public static void presentToast(Context context, String text) {

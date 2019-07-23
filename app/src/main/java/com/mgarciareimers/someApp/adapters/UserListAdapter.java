@@ -45,29 +45,33 @@ public class UserListAdapter extends BaseAdapter {
 
     @Override
     public View getView(final int index, View view, ViewGroup viewGroup) {
-        View listView = view;
+        if (this.bitmapList.size() > 0 && this.userList.size() > 0) {
+            View listView = view;
 
-        if (listView == null) {
-            LayoutInflater layoutInflater = (LayoutInflater) this.activity.getSystemService(this.activity.LAYOUT_INFLATER_SERVICE);
-            listView = layoutInflater.inflate(R.layout.element_user, viewGroup, false);
+            if (listView == null) {
+                LayoutInflater layoutInflater = (LayoutInflater) this.activity.getSystemService(this.activity.LAYOUT_INFLATER_SERVICE);
+                listView = layoutInflater.inflate(R.layout.element_user, viewGroup, false);
+            }
+
+            // ImageView.
+            ImageView userImageView = listView.findViewById(R.id.userImageView);
+            userImageView.setImageBitmap(this.bitmapList.get(index));
+
+            // TextView.
+            TextView userInfoTextView = listView.findViewById(R.id.userInfoTextView);
+            userInfoTextView.setText(this.userList.get(index).getName());
+
+            listView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Log.d("Item click:", Integer.toString(index));
+                }
+            });
+
+            return listView;
         }
 
-        // ImageView.
-        ImageView userImageView = listView.findViewById(R.id.userImageView);
-        userImageView.setImageBitmap(this.bitmapList.get(index));
-
-        // TextView.
-        TextView userInfoTextView = listView.findViewById(R.id.userInfoTextView);
-        userInfoTextView.setText(this.userList.get(index).getName());
-
-        listView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.d("Item click:", Integer.toString(index));
-            }
-        });
-
-        return listView;
+        return null;
     }
 
     public void notifyDataSetChanged(UserPictureGroup userPictureGroup) {
