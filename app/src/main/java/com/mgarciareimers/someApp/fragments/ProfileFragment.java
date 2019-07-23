@@ -1,6 +1,7 @@
 package com.mgarciareimers.someApp.fragments;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,20 +15,26 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.mgarciareimers.someApp.R;
+import com.mgarciareimers.someApp.activities.LoginActivity;
+import com.mgarciareimers.someApp.activities.TabsActivity;
 import com.mgarciareimers.someApp.commons.Utilities;
 
 public class ProfileFragment extends Fragment {
     private Activity activity;
 
     private ConstraintLayout progressBarContainer;
-    private ImageButton editButton, saveButton, cancelButton;
+    private ImageButton editButton, saveButton, cancelButton, signOutButton;
     private ImageView profileImageView;
     private EditText nameSurnameEditText, emailEditText;
+
+    private FirebaseAuth firebaseAuth;
 
     public ProfileFragment(Activity activity, ConstraintLayout progressBarContainer) {
         this.activity = activity;
         this.progressBarContainer = progressBarContainer;
+        this.firebaseAuth = FirebaseAuth.getInstance();
     }
 
     @Nullable
@@ -41,6 +48,7 @@ public class ProfileFragment extends Fragment {
         this.editButton = fragmentView.findViewById(R.id.editButton);
         this.saveButton= fragmentView.findViewById(R.id.saveButton);
         this.cancelButton = fragmentView.findViewById(R.id.cancelButton);
+        this.signOutButton = fragmentView.findViewById(R.id.signOutButton);
 
         this.editButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +68,15 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 saveProfile();
+            }
+        });
+
+        this.signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                firebaseAuth.signOut();
+                startActivity(new Intent(activity, LoginActivity.class));
+                activity.finish();
             }
         });
 

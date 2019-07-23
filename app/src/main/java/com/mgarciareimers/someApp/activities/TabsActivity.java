@@ -17,8 +17,10 @@ public class TabsActivity extends AppCompatActivity {
     private ViewPager viewPager = null;
     private ConstraintLayout progressBarContainer = null;
 
-    SearchUserFragment searchUserFragment = null;
-    ProfileFragment profileFragment = null;
+    private SearchUserFragment searchUserFragment = null;
+    private ProfileFragment profileFragment = null;
+
+    private int selectedTabId = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,7 +78,9 @@ public class TabsActivity extends AppCompatActivity {
 
     // Method that is called when the tab is selected.
     private void onTabItemSelected(TabLayout.Tab tab) {
-        switch(tab.getPosition()) {
+        this.selectedTabId = tab.getPosition();
+
+        switch (tab.getPosition()) {
             case 0:
                 this.searchUserFragment.getUsers();
                 break;
