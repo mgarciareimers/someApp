@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.TabsActivity"></activity>
+        <activity android:name=".activities.TabsActivity" />
         <activity
             android:name=".activities.LoginActivity"
             android:screenOrientation="portrait">
